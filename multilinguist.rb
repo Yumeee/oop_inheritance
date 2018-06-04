@@ -52,3 +52,27 @@ class Multilinguist
     json_response['translationText']
   end
 end
+
+class MathGenius < Multilinguist
+  def report_total(list)
+    message = say_in_local_language("The total is")
+    return "#{message} #{list.sum}."
+  end
+
+end
+
+class QuoteCollector < Multilinguist
+  collection = []
+
+  def quote_memorize(quote)
+    current_country_quote = say_in_local_language(quote)
+    current_country_quote << collection
+  end
+
+  def say_quote(language)
+    collection.each do |quote|
+    end
+  end 
+
+
+end
