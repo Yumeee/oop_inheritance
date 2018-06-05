@@ -62,17 +62,40 @@ class MathGenius < Multilinguist
 end
 
 class QuoteCollector < Multilinguist
-  collection = []
+# The second child class we're going to define represents a person
+# who loves to memorize quotes and then travel the world,
+# unleashing poor translations of them to unsuspecting passers-by.
+# Each instance of this class should have its own ever-growing collection
+# of favourite quotes. It should have the ability to add a new quote to
+# its collection as well as the ability to select a random quote to share
+ # in the local language.
+ def initialize
+   @collection = []
+ end
 
-  def quote_memorize(quote)
-    current_country_quote = say_in_local_language(quote)
-    current_country_quote << collection
+  def collection
+    @collection
   end
 
-  def say_quote(language)
-    collection.each do |quote|
-    end
-  end 
+  def quote_memorize(quote)
+    @collection << quote
+  end
 
+  def say_random
+    random_quote = collection.sample
+    print say_in_local_language(random_quote)
+  end
 
 end
+
+
+
+quote_dude = QuoteCollector.new
+quote_dude.quote_memorize("Hello hello.")
+quote_dude.quote_memorize("Je donne ma langue au chat.")
+quote_dude.quote_memorize("I am a dog and I like bones.")
+quote_dude.travel_to("Japan")
+print quote_dude.collection
+print "\n"
+quote_dude.travel_to("France")
+print quote_dude.say_random
