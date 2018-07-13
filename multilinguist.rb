@@ -24,6 +24,8 @@ class Multilinguist
   #
   # @param country_name [String] The full name of a country
   # @return [String] A 2 letter iso639_1 language code
+
+
   def language_in(country_name)
     params = {query: {fullText: 'true'}}
     response = HTTParty.get("#{COUNTRIES_BASE_URL}/#{country_name}", params)
@@ -60,6 +62,9 @@ class MathGenius < Multilinguist
   end
 
 end
+
+me = Multilinguist.new
+print me.language_in('France')
 
 class QuoteCollector < Multilinguist
 # The second child class we're going to define represents a person
